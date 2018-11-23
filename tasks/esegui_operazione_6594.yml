@@ -1,1 +1,45 @@
-- ping:
+- name: copio il nuovo file checkdf.sh
+  copy:
+     backup: true
+     owner: reicom
+     group: contact
+     mode: 0755
+     src: "{{ dest_script }}"
+     dest: files/checkdf.sh
+
+- file:
+    backup: true
+    path: "{{ dest_cron }}"
+
+- name: rimuovo la vecchia riga di cron
+  lineinfile:
+    path: "{{ dest_cron }}"
+    state: absent
+    regexp: 'checkdf' 
+    
+- name: aggiungo cron1
+  cron: 
+     user: reicom
+     job: "{{ cron_line }}"
+     cron_file: "{{ dest_cron }}"
+     name: 'BUG6594_cron1'
+     hour: 0
+     minute: 0-10/1
+
+- name: aggiungo cron2
+  cron: 
+     user: reicom
+     job: "{{ cron_line }}"
+     cron_file: "{{ dest_cron }}"
+     name: 'BUG6594_cron2'
+     hour: 0
+     minute: 15-59/1
+
+- name: aggiungo cron3
+  cron: 
+     user: reicom
+     job: "{{ cron_line }}"
+     cron_file: "{{ dest_cron }}"
+     name: 'BUG6594_cron3'
+     hour: 1-23           
+    

@@ -18,7 +18,7 @@
     path: "{{ dest_cron }}"
   register: f2_6594    
   
-- shell: "grep 'checkdf.sh -m'  {{ dest_cron }}"
+- shell: "grep 'checkdf.sh -m'  {{ dest_cron }} | grep -v '#' "
   check_mode: false
   changed_when: false
   failed_when: false
