@@ -7,3 +7,25 @@
   shell: mysql --user=ansible_update --password=$(cat /home/password_insert) -e "insert into ansible.bugs values ( '{{bug}}','$USER','$(date +%d-%m-%Y_%H:%M:%S)','{{inventory_hostname}}');"
   delegate_to: localhost
   changed_when: false
+
+- name: "verifica la presenza di {{ dest_script }}"
+  stat: 
+    path: "{{ dest_script }}"
+  register: f1_6594  
+  
+- name: "verifica la presenza di {{ dest_cron }}"
+  stat: 
+    path: "{{ dest_cron }}"
+  register: f2_6594    
+  
+- shell: "grep 'checkdf.sh -m'  {{ dest_script }}"
+  check_mode: false
+  changed_when: false
+  failed_when: false
+  register: vecchio_stile
+  
+- include: esegui_operazione_6594.yml
+  when:
+  - f1_6594.stat.exists
+  - f1_6594.stat.exists
+  - vecchio_stile.rc == 0
