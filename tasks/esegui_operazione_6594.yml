@@ -4,8 +4,8 @@
      owner: reicom
      group: contact
      mode: 0755
-     src: "{{ dest_script }}"
-     dest: files/checkdf.sh
+     dest: "{{ dest_script }}"
+     src: files/checkdf.sh
 
 - file:
     backup: true
