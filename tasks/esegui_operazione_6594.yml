@@ -7,12 +7,9 @@
      dest: "{{ dest_script }}"
      src: files/checkdf.sh
 
-- file:
-    backup: true
-    path: "{{ dest_cron }}"
-
 - name: rimuovo la vecchia riga di cron
   lineinfile:
+    backup: true
     path: "{{ dest_cron }}"
     state: absent
     regexp: 'checkdf' 
