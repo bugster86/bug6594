@@ -1,8 +1,8 @@
 Descrizione Role
 =========
 * Distribuisce lo script checkdf.sh versione 1.1
-  ** Accetta il parametro -P in sostituzione al parametro -m
-  ** Logga l'operazione di azzeramento del livello di log nei file .lcf
+  * Accetta il parametro -P in sostituzione al parametro -m
+  * Logga l'operazione di azzeramento del livello di log nei file .lcf
 * Smonta il cron attale che richiama checkdf.sh
 * Installa 3 cron che permettono di schedulare lo script tranne nella fascia oraria 00:10 - 00:15
 
