@@ -3,4 +3,4 @@
 bug: 6594
 dest_script: /opt/reitek/ct6/bin/checkdf.sh
 dest_cron: /etc/cron.d/reports.cron
-cron_line: '/opt/reitek/ct6/bin/checkdf.sh -P 90 -N > /var/log/ct6/checkdf.log 2>&1'
+cron_line: '/opt/reitek/ct6/bin/checkdf.sh -P $PERCENTAGE -N > /var/log/ct6/checkdf.log 2>&1'

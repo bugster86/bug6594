@@ -14,6 +14,13 @@
     state: absent
     regexp: 'checkdf' 
     
+- name: Aggiungo la variabile PERCENTAGE  
+  lineinfile:
+    path: "{{ dest_cron }}"
+    line: "PERCENTAGE={{ default_percentage }}"
+  
+  
+    
 - name: aggiungo cron1
   cron: 
      user: reicom
@@ -21,7 +28,7 @@
      cron_file: "{{ dest_cron }}"
      name: 'BUG6594_cron1'
      hour: 0
-     minute: 0-10/1
+     minute: 0-9/1
 
 - name: aggiungo cron2
   cron: 
