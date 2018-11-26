@@ -45,5 +45,13 @@
      job: "{{ cron_line }}"
      cron_file: "{{ dest_cron }}"
      name: 'BUG6594_cron3'
-     hour: 1-23           
+     hour: 1-23  
+     
+- name: aggiungo il file di logrotate
+  copy:
+    src: files/checkdf.rotate
+    dest: /etc/logrotate.d/
+    owner: root
+    group: root
+    mode: 0644             
     
